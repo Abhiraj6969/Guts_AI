@@ -1,0 +1,22 @@
+{
+  "extensions": {
+    "anchor_key": "",
+    "rx": 288,
+    "ry": 49
+  },
+  "builder": {
+    "anchor_key": "",
+    "rx": 118,
+    "ry": 156
+  },
+  "editor": {
+    "anchor_key": "Builder Code Editor",
+    "rx": 130,
+    "ry": 83
+  },
+  "run": {
+    "anchor_key": "Builder Code Editor",
+    "rx": 59,
+    "ry": 83
+  }
+}

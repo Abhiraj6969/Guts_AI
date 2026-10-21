@@ -1,0 +1,93 @@
+"""start_guts.pyw - runs Guts with NO terminal window.
+Everything Guts prints goes to guts.log in this folder.
+Test by hand:   pythonw start_guts.pyw     (then open guts.log)
+Stop him:       python stop_guts.py
+"""
+import os
+import sys
+import time
+import atexit
+import runpy
+import socket
+import traceback
+from pathlib import Path
+
+BASE = Path(__file__).resolve().parent
+os.chdir(BASE)
+sys.path.insert(0, str(BASE))
+
+LOG = BASE / "guts.log"
+PIDFILE = BASE / "guts.pid"
+LOCK_PORT = 47653                       # only one Guts at a time
+SCRIPTS = ["live_voice_5.py", "live_voice_4.py", "live_voice_3.py"]   # first one that exists is used
+BOOT_DELAY = 15                         # seconds to wait after login (only with --login)
+MAX_QUICK_FAILS = 5
+
+
+def setup_log():
+    if LOG.exists() and LOG.stat().st_size > 1_000_000:
+        LOG.replace(BASE / "guts.old.log")
+    f = open(LOG, "a", encoding="utf-8", buffering=1)
+    sys.stdout = f
+    sys.stderr = f
+    print(f"\n===== Guts launcher start {time.strftime('%Y-%m-%d %H:%M:%S')} =====")
+
+
+def internet_ok() -> bool:
+    try:
+        socket.create_connection(("generativelanguage.googleapis.com", 443), timeout=5).close()
+        return True
+    except OSError:
+        return False
+
+
+def wait_for_internet(max_wait: int = 90):
+    t0 = time.time()
+    while time.time() - t0 < max_wait:
+        if internet_ok():
+            return
+        time.sleep(5)
+    print("[Launcher] No internet after 90 sec, starting anyway (Guts will keep retrying).")
+
+
+def main():
+    setup_log()
+    lock = socket.socket()
+    try:
+        lock.bind(("127.0.0.1", LOCK_PORT))
+    except OSError:
+        print("[Launcher] Guts is already running. Exiting this copy.")
+        return
+    PIDFILE.write_text(str(os.getpid()))
+    atexit.register(lambda: PIDFILE.exists() and PIDFILE.unlink())
+
+    script = next((BASE / n for n in SCRIPTS if (BASE / n).exists()), None)
+    if script is None:
+        print(f"[Launcher] No Guts script found. Looked for: {', '.join(SCRIPTS)}")
+        return
+
+    if "--login" in sys.argv:
+        print(f"[Launcher] Login start: waiting {BOOT_DELAY} sec for mic, camera and network ...")
+        time.sleep(BOOT_DELAY)
+    wait_for_internet()
+
+    fails = 0
+    while fails < MAX_QUICK_FAILS:
+        started = time.time()
+        print(f"[Launcher] Starting {script.name}")
+        try:
+            runpy.run_path(str(script), run_name="__main__")
+            print("[Launcher] Guts stopped normally.")
+            return
+        except SystemExit:
+            print("[Launcher] Guts exited.")
+            return
+        except BaseException:
+            traceback.print_exc()
+        fails = fails + 1 if time.time() - started < 60 else 1
+        print(f"[Launcher] Crashed (quick fails: {fails}/{MAX_QUICK_FAILS}). Restarting in 10 sec ...")
+        time.sleep(10)
+    print("[Launcher] Too many quick crashes. Giving up. Read the lines above, then run Guts by hand.")
+
+
+main()

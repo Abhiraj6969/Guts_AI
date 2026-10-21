@@ -1,0 +1,15 @@
+{
+  "boss_name": "Boss",
+  "guts_name": "Guts",
+  "show_avatar": true,
+  "avatar_x": 1302,
+  "avatar_y": 0,
+  "language": "hinglish",
+  "persona": "giga_chad",
+  "browser": "auto",
+  "face_lock": true,
+  "proactive": true,
+  "camera_index": 0,
+  "first_run_done": false,
+  "consent": false
+}

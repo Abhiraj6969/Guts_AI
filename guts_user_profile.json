@@ -1,0 +1,99 @@
+{
+  "friends_and_family": {
+    "Jagrit": "friend"
+  },
+  "personality_traits": [],
+  "likes": [],
+  "dislikes": [],
+  "preferences": {},
+  "mood_log": [
+    {
+      "time": "2026-10-05 20:53",
+      "mood": "curious",
+      "note": "Boss asked what is visible on his screen"
+    },
+    {
+      "time": "2026-10-05 20:54",
+      "mood": "casual",
+      "note": "Boss wants to text Jagrit 'hi' on WhatsApp"
+    },
+    {
+      "time": "2026-10-05 20:55",
+      "mood": "patient",
+      "note": "Background murmur, Boss waiting for task to complete"
+    },
+    {
+      "time": "2026-10-05 20:56",
+      "mood": "casual",
+      "note": "Boss talking casually in room"
+    },
+    {
+      "time": "2026-10-06 09:53",
+      "mood": "tired",
+      "note": "Boss is exhausted after a long day."
+    },
+    {
+      "time": "2026-10-06 10:02",
+      "mood": "happy",
+      "note": "college confidence"
+    },
+    {
+      "time": "2026-10-06 10:08",
+      "mood": "happy",
+      "note": "User feeling like a lion"
+    },
+    {
+      "time": "2026-10-06 10:44",
+      "mood": "happy",
+      "note": "Casual greeting from Boss."
+    },
+    {
+      "time": "2026-10-06 11:06",
+      "mood": "stressed",
+      "note": "Airtel app issues"
+    },
+    {
+      "time": "2026-10-06 16:36",
+      "mood": "stressed",
+      "note": "Boss recognized system trigger during stressed state."
+    },
+    {
+      "time": "2026-10-06 17:30",
+      "mood": "happy",
+      "note": "boss is chatting about casual things and seems in good spirits"
+    },
+    {
+      "time": "2026-10-06 22:32",
+      "mood": "happy",
+      "note": "arrived and settled"
+    },
+    {
+      "time": "2026-10-07 18:29",
+      "mood": "happy",
+      "note": "Friendly greeting"
+    },
+    {
+      "time": "2026-10-07 22:15",
+      "mood": "stressed",
+      "note": "Boss's mother is irritated with Aarthi, Boss sounds stressed."
+    },
+    {
+      "time": "2026-10-16 14:51",
+      "mood": "angry",
+      "note": "extreme anger and frustration"
+    }
+  ],
+  "facts": {
+    "favourite_food": "Biryani",
+    "game": "Red Dead Redemption 2",
+    "origin of name": "Named after Guts from the manga Berserk, the Black Swordsman.",
+    "Boss's brother voice profile": "Confirmed voice profile of Boss's younger brother",
+    "ambition": "Transform Guts into a Jarvis-like AI with comprehensive capabilities.",
+    "language preference": "Always speak in Hinglish with Boss.",
+    "Heavy Brain token balance": "1 million tokens total, 2.6k used",
+    "Tekken 8 Path": "E:\\TEKKEN 8\\TEKKEN 8.exe",
+    "dietary_preference": "Strictly vegetarian, does not eat chicken or biryani.",
+    "Image-based Hacking Awareness Project": "Project focuses on demonstrating how hackers embed malicious scripts in images and how to prevent such attacks through scanning and security tools.",
+    "Ethical Hacker Identity": "We are ethical hackers who use offensive techniques defensively to capture real attackers and prevent cyber attacks."
+  }
+}
